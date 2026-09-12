@@ -23,7 +23,7 @@
 
 3. Copiar el archivo de variables de entorno de ejemplo:
    ```bash
-   cp .env.example .env
+   cp .env
    ```
 
 4. Generar la clave de aplicación:
