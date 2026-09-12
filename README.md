@@ -128,7 +128,7 @@ flowchart TD
     H --> I[Respuesta devuelta al navegador]
 ```
 
-**Paso a paso (¿qué pasa cuando un usuario escribe una URL en el navegador?):**
+**Paso a paso (¿Qué pasa cuando un usuario escribe una URL en el navegador?):**
 
 1. El usuario escribe, por ejemplo, `http://localhost/usuarios`.
 2. El archivo `public/index.php` recibe la petición (es el punto de entrada de toda la aplicación).
@@ -162,9 +162,6 @@ El archivo `.env` contiene las **variables de entorno** de la aplicación: confi
 | `DB_USERNAME` | Usuario de la base de datos | `sail` |
 | `DB_PASSWORD` | Contraseña del usuario de la base de datos | `password` |
 
-**Importante:** cuando se usa Sail, `DB_HOST` debe ser `mysql` (el nombre del servicio definido en `compose.yml`), **no** `localhost` ni `127.0.0.1`, porque la base de datos corre dentro de un contenedor Docker distinto al de la aplicación.
-
-El archivo `.env.example` sí se incluye en el repositorio como plantilla, con valores vacíos o genéricos, para que cada integrante del equipo cree su propio `.env` local sin exponer credenciales reales.
 
 ---
 
