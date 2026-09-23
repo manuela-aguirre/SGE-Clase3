@@ -1,14 +1,14 @@
 # SGE - Sistema de Gestión Empresarial
 
-## Capítulo 2: Instalación de Laravel
+## Semana 2: Instalación de Laravel
 
-### 2.1 Requisitos previos
+### 2.1 Requisitos 
 
 - PHP 8.2 o superior
 - Composer
-- Docker Desktop (con WSL2 habilitado en Windows)
+- Docker Desktop (con WSL2)
 
-### 2.2 Pasos de instalación
+### 2.2 Pasos de la instalación
 
 1. Clonar el repositorio:
    ```bash
@@ -36,21 +36,21 @@
    composer require laravel/sail --dev
    php artisan sail:install
    ```
-   Durante la instalación se selecciona el servicio `mysql`. Esto genera el archivo `compose.yml` (docker-compose) en la raíz del proyecto.
+   Durante la instalación se selecciona el servicio `mysql`. Esto genera el archivo `compose.yml` (docker-compose) en la raíz del proyecto para usar los contenedores.
 
 6. Levantar el entorno de desarrollo con Sail:
    ```bash
    ./vendor/bin/sail up -d
    ```
    - `up` levanta los contenedores definidos en `compose.yml`.
-   - `-d` los ejecuta en segundo plano ("detached"), dejando la terminal libre.
+   - `-d` los ejecuta en segundo plano, dejando la terminal libre.
    - La primera vez puede tardar varios minutos porque descarga las imágenes de Docker.
 
 7. Verificar que los contenedores quedaron activos:
    ```bash
    docker ps
    ```
-   Deben aparecer los servicios `laravel.test` (PHP + servidor web) y `mysql` (base de datos).
+   Deben aparecer los servicios `laravel.test` (PHP + servidor web) y `mysql` (la base de datos).
 
 8. Ejecutar las migraciones para crear las tablas base (`users`, `sessions`, `failed_jobs`, etc.):
    ```bash
@@ -61,7 +61,7 @@
    ```
    http://localhost
    ```
-   **Nota:** Sail usa el puerto **80** por defecto, no el 8000. Si el puerto 80 ya está ocupado en el equipo, se puede cambiar la variable `APP_PORT` en el `.env` (ej. `APP_PORT=8080`) y reiniciar con `./vendor/bin/sail down` y `./vendor/bin/sail up -d`.
+    Sail usa el puerto 80 por defecto, no el 8000. Si el puerto 80 ya está ocupado en el equipo, se puede cambiar la variable `APP_PORT` en el `.env` (ej. `APP_PORT=8080`) y reiniciar con `./vendor/bin/sail down` y `./vendor/bin/sail up -d`.
 
 Para detener el entorno:
 ```bash
@@ -91,14 +91,9 @@ Al ejecutar `composer create-project` (o clonar un proyecto Laravel ya creado), 
 
 Laravel organiza la aplicación siguiendo el patrón **MVC**, que separa la aplicación en tres componentes:
 
-1. **Modelo (M):** representa los datos y la lógica de negocio; habla con la base de datos. En Laravel vive en `app/Models/`.
-2. **Vista (V):** es lo que el usuario ve, la interfaz. En Laravel vive en `resources/views/` y usa el motor de plantillas **Blade**.
-3. **Controlador (C):** recibe las peticiones del usuario, consulta al Modelo para obtener datos y decide qué Vista mostrar. En Laravel vive en `app/Http/Controllers/`.
-
-**Analogía (un restaurante):**
-- **Modelo** = la cocina (donde se preparan los datos).
-- **Vista** = el menú y la presentación del plato (lo que ve el cliente).
-- **Controlador** = el mesero (recibe el pedido, va a la cocina, trae la comida).
+1. **Modelo (M):** Representa los datos y la lógica de negocio. Habla con la base de datos. En Laravel vive en `app/Models/`.
+2. **Vista (V):** Es lo que el usuario ve, o sea, la interfaz. En Laravel vive en `resources/views/` y usa el motor de plantillas **Blade**.
+3. **Controlador (C):** Recibe las peticiones del usuario, consulta al Modelo para obtener datos y decide qué Vista mostrar. En Laravel vive en `app/Http/Controllers/`.
 
 Esto es útil porque separa responsabilidades, facilita el mantenimiento y permite que distintas personas trabajen en Vistas y en Modelos/Controladores sin pisarse el trabajo.
 
@@ -163,9 +158,3 @@ El archivo `.env` contiene las **variables de entorno** de la aplicación: confi
 | `DB_PASSWORD` | Contraseña del usuario de la base de datos | `password` |
 
 
----
-
-## Notas sobre esta entrega
-
-- Las capturas de pantalla solicitadas se encuentran en la carpeta `capturas/`.
-- El archivo `.env` y la carpeta `vendor/` están excluidos del repositorio mediante `.gitignore`, siguiendo las buenas prácticas de Laravel.
