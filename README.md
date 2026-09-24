@@ -78,7 +78,7 @@ Estas entidades son las utilizadas en este avance del proyecto ayudándonos como
 
 ## 5. Diagrama Entidad-Relación (MER)
 
-![Diagrama Entidad-Relación](diagrama_mer.jpeg)
+![Diagrama Entidad-Relación](diagrama_mer.jpg)
 
 **Relaciones principales (entidades implementadas):**
 - `Editorial` 1:N `Libro` (una editorial publica muchos libros; cada libro pertenece a una editorial)
